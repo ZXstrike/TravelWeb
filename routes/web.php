@@ -7,6 +7,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomePage::class);
 
-Route::get('/spot-details', SpotDetail::class);
+Route::get('/spot-detail/{travel}/{slug}', SpotDetail::class);
 
 Route::get('/booking-list', BookingList::class);

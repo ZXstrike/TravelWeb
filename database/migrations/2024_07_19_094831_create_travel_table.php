@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
+            $table->string('image');
             $table->string('slug') -> unique();
             $table->text('description');
             $table->integer('base_price');
