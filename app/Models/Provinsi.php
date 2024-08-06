@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Travel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Provinsi extends Model
 {
@@ -12,8 +13,8 @@ class Provinsi extends Model
 
     protected $fillable = ['name'];
 
-    public function destination():HasMany
+    public function travels(): HasMany
     {
-        return $this->hasMany(Destination::class, 'provinsi_id');
+        return $this->hasMany(Travel::class);
     }
 }

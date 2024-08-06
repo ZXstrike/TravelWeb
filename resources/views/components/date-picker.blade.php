@@ -15,6 +15,8 @@
         this.datePickerValue = this.datePickerFormatDate(selectedDate);
         this.datePickerIsSelectedDate(day);
         this.datePickerOpen = false;
+        $wire.date = this.datePickerValue;
+        console.log(this.datePickerValue);
     },
     datePickerPreviousMonth() {
         if (this.datePickerMonth == 0) {
@@ -89,13 +91,15 @@ datePickerMonth = currentDate.getMonth();
 datePickerYear = currentDate.getFullYear();
 datePickerDay = currentDate.getDay();
 datePickerValue = datePickerFormatDate(currentDate);
-datePickerCalculateDays();" x-cloak>
+datePickerCalculateDays();
+{{-- $wire.date = datePickerValue; --}}
+" x-cloak>
     <div class="w-full">
         <div class="relative w-[17rem]">
-            <input x-ref="datePickerInput" type="text" @click="datePickerOpen=!datePickerOpen" x-model="datePickerValue"
+            <input x-ref="datePickerInput" type="text" @click="datePickerOpen=!datePickerOpen" wire:model="date"
                 x-on:keydown.escape="datePickerOpen=false"
                 class="flex w-full h-10 px-3 py-2 text-sm bg-slate-100 border rounded-xl text-neutral-600 border-neutral-300 ring-offset-background placeholder:text-neutral-400 focus:border-neutral-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-400 disabled:cursor-not-allowed disabled:opacity-50"
-                placeholder="Select date" readonly {{ $attributes }} >
+                placeholder="Select date" readonly {{ $attributes }}>
             <div @click="datePickerOpen=!datePickerOpen; if(datePickerOpen){ $refs.datePickerInput.focus() }"
                 class="absolute top-0 right-0 px-3 py-2 cursor-pointer text-neutral-400 hover:text-neutral-500">
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

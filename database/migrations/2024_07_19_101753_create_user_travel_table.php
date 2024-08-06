@@ -14,9 +14,13 @@ return new class extends Migration
         Schema::create('user_travel', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('user_id')->constrained(table: 'users', indexName: 'user_travel_user_id');
+            $table->string('name');
+            $table->string('phone');
+            $table->date('date');
+            $table->integer('participants');
+            $table->integer('total');
+            // $table->foreignId('user_id')->constrained(table: 'users', indexName: 'user_travel_user_id');
             $table->foreignId('travel_id')->constrained(table: 'travel', indexName: 'user_travel_travel_id');
-            $table->foreignId('travel_option_id')->constrained(table: 'travel_options', indexName: 'user_travel_travel_option_id');
         });
     }
 

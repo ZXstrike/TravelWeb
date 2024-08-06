@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Provinsi;
 use App\Models\Travel;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -12,18 +13,21 @@ class HomePage extends Component
 {
     use WithPagination, WithoutUrlPagination;
 
+    public function mount()
+    {
+    }
+
     public $search = '';
 
     public function searchTravel()
     {
-        $this->resetPage();
     }
 
     #[Title('Home')]
     public function render()
     {
         return view('livewire.home-page', [
-            'travels'=>Travel::where('name', 'like', '%'.$this->search.'%')->paginate(6)
+            'travels' => Travel::where('name', 'like', '%' . $this->search . '%')->paginate(6)
         ]);
     }
 }

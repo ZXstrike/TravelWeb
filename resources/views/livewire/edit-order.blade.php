@@ -1,12 +1,12 @@
 <div>
     <div class="my-5">
-        <img src="{{ $travel->image }}" alt="" class="w-full h-[35svh] rounded-lg object-cover object-center">
+        <img src="{{ $user_travel->travel->image }}" alt="" class="w-full h-[35svh] rounded-lg object-cover object-center">
     </div>
     <div class="mx-5">
         <div>
-            <h1 class="text-3xl font-bold">{{ $travel->name }}</h1>
+            <h1 class="text-3xl font-bold">{{ $user_travel->travel->name }}</h1>
             <p class="text-2xl text-gray-500">Jawa Tengah</p>
-            <p class=" text-md text-justify mt-3">{{ $travel->description }}</p>
+            <p class=" text-md text-justify mt-3">{{ $user_travel->travel->name }}</p>
         </div>
         <div class="relative flex py-5 items-center">
             <div class="flex-grow border-t border-gray-400"></div>
@@ -54,7 +54,7 @@
                     class="flex min-w-[14rem] flex-col divide-y mt-2 divide-slate-300 overflow-clip rounded-xl border border-slate-300">
                     @foreach ($travel_options as $option)
                         <x-check-box-type1 label="{{ $option->name }}"
-                            price="{{ number_format($option->option_price, 2) }}" list="optionals"
+                            price="{{ number_format($option->option_price, 2) }}" list="selected_optionals"
                             itemid="{{ $option->id }}" />
                     @endforeach
                 </ul>
@@ -70,7 +70,7 @@
                 <label for="textInputDefault" class="sm:w-[30vh] pr-3 pl-0.5 text-l font-semibold">Rincian Biaya</label>
                 <div>
                     <p class="text-l font-semibold">
-                        Rp. {{ number_format($travel->base_price, 2) }}
+                        Rp. {{ number_format($user_travel->travel->base_price, 2) }}
                     </p>
                     @foreach ($optionals_price as $price)
                         <p class="text-l font-semibold">
@@ -86,9 +86,9 @@
                 </p>
             </div>
             <div class="py-3">
-                <button type="button" wire:click="orderTravel"
-                    class="cursor-pointer whitespace-nowrap w-full my-2  sm:my-0  sm:w-fit rounded-xl bg-blue-700 px-10 py-2 text-base font-medium tracking-wide text-slate-100 transition hover:opacity-75 text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed">Pesan</button>
-                <a href="/"
+                <button type="button" wire:click="updateTravel"
+                    class="cursor-pointer whitespace-nowrap w-full my-2  sm:my-0  sm:w-fit rounded-xl bg-blue-700 px-10 py-2 text-base font-medium tracking-wide text-slate-100 transition hover:opacity-75 text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed">Update Pesanan</button>
+                <a href="/booking-list"
                     class="cursor-pointer whitespace-nowrap w-full my-2  sm:my-0  sm:w-fit rounded-xl bg-red-600 px-10 py-2 text-base font-medium tracking-wide text-white transition hover:opacity-75 text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed">Kembali</a>
             </div>
         </div>

@@ -9,7 +9,7 @@
             x-on:keydown.down.prevent="openedWithKeyboard = true" x-on:keydown.enter.prevent="openedWithKeyboard = true"
             x-on:keydown.space.prevent="openedWithKeyboard = true" x-bind:aria-expanded="isOpen || openedWithKeyboard"
             x-bind:aria-label="selectedOption ? selectedOption.value : 'Please Select'">
-            <span class="text-sm font-normal" x-text="selectedOption ? selectedOption.value : 'Please Select'"></span>
+            <span class="text-sm font-normal" x-text="selectedOption ? selectedOption.label : 'Please Select'" x></span>
             <!-- Chevron  -->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"class="size-5"
                 aria-hidden="true">
@@ -20,7 +20,7 @@
         </button>
 
         <!-- Hidden Input To Grab The Selected Value  -->
-        <input id="make" name="make" x-ref="hiddenTextField" hidden="" />
+        <input id="make" name="make" x-ref="hiddenTextField" hidden="" wire:model="selectedProvince" />
         <div x-show="isOpen || openedWithKeyboard" id="makesList"
             class="absolute left-0 top-11 z-10 w-full overflow-hidden rounded-xl border border-slate-300 bg-white "
             role="listbox" aria-label="industries list" x-on:click.outside="isOpen = false, openedWithKeyboard = false"
