@@ -31,7 +31,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($userTravels as $userTravel)
+                    @foreach ($userTravels as $userTravel)
                         <tr
                             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <th scope="row"
@@ -42,7 +42,7 @@
                                 {{ $userTravel->phone }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $userTravel->date}}
+                                {{ $userTravel->date }}
                             </td>
                             <td class="px-6 py-4">
                                 {{ $userTravel->travel->name }}
@@ -55,7 +55,10 @@
                             </td>
                             <td class="px-6 py-4 text-right">
                                 <a href="/edit-order/{{ $userTravel->id }}"
-                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Detail</a>
+                                    class="font-medium text-blue-600 hover:underline px-3">Detail</a>
+                                <button wire:click="deleteOrder({{ $userTravel->id }})" wire:confirm="Apakah anda yakin?"
+                                    class="font-medium text-red-600 hover:underline px-3">Hapus</button>
+
                             </td>
                         </tr>
                     @endforeach
@@ -63,7 +66,7 @@
             </table>
         </div>
         <div class="w-full pd-4 md:px-10">
-            {{ $userTravels->links('vendor.livewire.tailwind', data:['scrollTo' => '#paginated-posts']) }}
+            {{ $userTravels->links('vendor.livewire.tailwind', data: ['scrollTo' => '#paginated-posts']) }}
         </div>
     </div>
 
